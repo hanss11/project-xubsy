@@ -1,0 +1,95 @@
+@import url(https://fonts.googleapis.com/css?family=Vibur);
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.beerstittle {
+  color: #ccc;
+  text-align: center;
+  font-family: 'Vibur', cursive;
+  font-size: 40px;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+#maximum{
+  color: black;
+}
+
+#fileInput{
+  display: none;
+}
+.icon{
+  font-size: 40px;
+  cursor: pointer;
+}
+.icon:hover{
+  color: #303952;
+}
+
+
+body {
+/* background-color: #21201E; */
+/* background-color: white; */
+/* background-color: #2E190E; */
+background-color: black;
+/* background-color: #23140D; */
+/* background-color: #151629; */
+
+
+
+}
+
+#nav {
+  /* background-image: url(../images/woodBackground.jpg); */
+  background-image: url(../images/wood2.jpg);
+  background-position: buttom;
+}
+
+
+#beersnav , #msg , #notif , #homecolor , #momentscolor , #searchcolor, #npostcolor, #biocolor, #newfriends{
+   color:#FFB200;
+   /* color: white; */
+   /* color: black; */
+}
+
+#contperf {
+  /* background-image: url(../images/wood2.jpg); */
+  background-color: #23140D;
+  border-color: #FFB200;
+}
+
+#bordercontprof {
+  border-color: white;
+}
+
+.btn btn-primary {
+
+background-color: #FFB200;
+
+}
+
+.comentacom {
+  color: #FFB200;
+}
+
+#contderecha {
+  background-color: #23140D;
+
+}
+
+#footercopyright {
+    background-image: url(../images/wood2.jpg);
+    height:5vh;
+    /* color: #FFB200 */
+
+}
+
+#countandcoment , #the-count , #current , #maximum {
+  color: #FFB200;
+
+}
+
+.postimage {
+    color: #FFB200;
+}
