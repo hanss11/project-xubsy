@@ -115,7 +115,7 @@
   </div>
 </div>
 <footer>
-    <div class="sub-footer mt-5">
+    <div class="sub-footer mt-5 foot">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12" id="footercopyright">
@@ -123,5 +123,5 @@
         </div>
       </div>
     </div>
-  </footer>
+</footer>
   @stop

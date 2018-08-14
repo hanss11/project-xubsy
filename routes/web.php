@@ -88,4 +88,6 @@ Route::get('/profile', 'profilecontroller@prof')->middleware('auth');
 Route::get('/peoples', 'peoplecontroller@peoples');
 Route::get('/search', 'peoplecontroller@busca');
 Route::get('/magic','magiccontroller@magic');
+Route::get('profile/{profileId}/follow', 'profileController@followUser')->name('user.follow');
+Route::get('/{profileId}/unfollow', 'profileController@unFollowUser')->name('user.unfollow');
 //Route::get('/perfil', 'homecontroller@perfil')->middleware('auth')

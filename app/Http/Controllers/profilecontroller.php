@@ -17,6 +17,7 @@ class profilecontroller extends Controller
 
     return $view;
   }
+  
   public function verperfil($id){
     $userz = user::find($id);
     //$post = User::find($id)->posts;
@@ -32,4 +33,24 @@ class profilecontroller extends Controller
 
     return $view;
   }
+  public function followUser(int $profileId)
+    {
+    $user = User::find($profileId);
+    if(! $user) 
+      {    
+       return redirect()->back()->with('error', 'User does not exist.'); 
+      }
+    $user->followers()->attach(auth()->user()->id);
+      return redirect()->back()->with('success', 'Successfully followed the user.');
+    }
+  public function unFollowUser(int $profileId)
+    {
+      $user = User::find($profileId);
+      if(! $user) {
+        
+         return redirect()->back()->with('error', 'User does not exist.'); 
+     }
+    $user->followers()->detach(auth()->user()->id);
+    return redirect()->back()->with('success', 'Successfully unfollowed the user.');
+    }
 }

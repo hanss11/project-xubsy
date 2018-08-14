@@ -1,6 +1,7 @@
 @extends('layouts.header')
 
 @section('contenido')
+
 <div class="container-fluid" style="background-image: url('http://www.arquimaster.com.ar/web/wp-content/uploads/2016/01/cerveceria_hidalgo3.jpg');
   height:50vh;
   margin-top: 6rem;
@@ -42,7 +43,13 @@
       <div class="card-body">
         <h5 class="card-title">titulo</h5>
         <p class="card-text">aca tambien info cualquiera</p>
-        <a href="#" class="btn btn-primary">Boton</a>
+      @if(Auth::user()->id != $users->id)
+        @if (Auth::user()->followings->find($users->id))
+          <a href="{{ route('user.unfollow', $users->id) }}" class="btn btn-primary bg-red">Dejar de seguir</a>
+        @else
+           <a href="{{ route('user.follow', $users->id) }}" class="btn btn-primary">Seguir</a>
+        @endif
+      @endif
       </div>
     </div>
   </div>

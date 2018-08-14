@@ -1,105 +1,90 @@
 @extends('layouts.header')
 
 @section('contenido')
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-caption">
-                        <h1 class="page-title">{{ Auth::user()->name }}</h1>
-                    </div>
-                </div>
-            </div>
+
+<div class="container-fluid" style="background-image: url('http://www.arquimaster.com.ar/web/wp-content/uploads/2016/01/cerveceria_hidalgo3.jpg');
+  height:50vh;
+  margin-top: 6rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;">
+</div>
+<div class="container-fluid" style="background-color: #fff;">
+  <ul class="nav" style="margin-left: 10vw;">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Post <i class="far fa-clipboard" style="font-size:2rem;"></i> <br> </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Likes <i class="fas fa-heart" style="font-size:2rem;"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Seguidores <i class="fas fa-angle-double-up" style="font-size:2rem;"></i></a>
+  </li>
+  <li class="nav-item" style="margin-left: 33vw;">
+    <a class="nav-link active" href="#">Seguidos <i class="fas fa-angle-double-up" style="font-size:2rem;"></i> <br> </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Amigos <i class="fas fa-user-friends" style="font-size:2rem;"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Puntos <i class="fas fa-star" style="font-size:2rem;"></i></a>
+  </li>
+</ul>
+
+</div>
+@if(Auth::user()->avatar == '')
+<img class="rounded-circle" src="../images/default-avatar.png" style="z-index: 2;height: 200px; width:200px; position:absolute; top:50vh; left:50%; transform:translateX(-50%); border: solid 6px #fff;" alt="avatar-foto">
+@else
+<img class="rounded-circle" src="../images/{{Auth::user()->avatar}}" style="z-index: 2;height: 200px; width:200px; position:absolute; top:50vh; left:50%; transform:translateX(-50%); border: solid 6px #fff;object-fit: cover;" alt="avatar-foto">
+@endif
+<div class="container-fluid">
+  <div class="col-md-4">
+    <div class="card w-100 mt-3">
+      <div class="card-body">
+        <h5 class="card-title">titulo</h5>
+        <p class="card-text">aca tambien info cualquiera</p>
+        <a href="#" class="btn btn-primary">Boton</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="col-md-8 offset-md-2" style="margin-top: 13vh;">
+      <h3 class="text-center font-weight-bold">{{Auth::user()->name}}</h3>
+      <p class='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card w-100 mt-3">
+      <div class="card-body">
+        <h5 class="card-title">titulo</h5>
+        <p class="card-text">Aca va info cualquiera del user</p>
+        <a href="#" class="btn btn-primary">Boton</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+    @foreach ($posteos as $row)
+    <div class="card w-50 mt-5 mx-auto" style="width: 18rem; box-shadow: 1px 1px 10px 1px rgba(138,138,138,1);">
+          <div class="card-body ">
+        @if($row->fotopost)
+          <img class="card-img-top" src="../images/{{$row->fotopost}}" alt="Card image cap" style="height:50vh; object-fit: cover;">
+        @endif
+          <h5 class="card-title">{{$row->titulopost}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{$row->nickname}}</h6>
+          <p class="card-text">{{$row->mensajeposteado}}</p>
+          <a href="#" class="card-link">Like</a>
+          <a href="#" class="card-link">Compartir</a>
+          <p class="card-text"><small class="text-muted">{{$row->created_at}}</small></p>
+
         </div>
     </div>
-    <!-- /.page-header-->
-    <!-- news -->
 
-    <div class="card-section">
-        <div class="container">
-            <div class="card-block bg-white mb30">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- section-title -->
-                        <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5">
-            <div class="card kl-card kl-xl kl-shine kl-show">
-                <div class="kl-card-block kl-xl bg-primary kl-shadow-b kl-overlay kl-slide-in kl-show">
-                    <div class="kl-background">
-                        <img src="images/{{ Auth::user()->avatar}}">
-                    </div>
+    @endforeach
 
-                    <div class="kl-card-overlay kl-card-overlay-split-q kl-dark kl-inverse">
-                        <div class="kl-card-overlay-item">
 
-                        </div>
-                        <div class="kl-card-overlay-item"></div>
-                        <div class="kl-card-overlay-item">
-                            <div class="kl-figure-block">
-                                <span class="kl-figure kl-txt-shadow">26k</span>
-                                <span class="kl-title">Seguidores</span>
-                            </div>
-                        </div>
-                        <div class="kl-card-overlay-item">
-                            <div class="kl-figure-block">
-                                <span class="kl-figure">109</span>
-                                <span class="kl-title">Siguiendo</span>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-              <h1 class="text-center">Pensando en cerveza?</h1>
-              <form class="form" action="/posteo" method="POST" enctype="multipart/form-data">
-                {{csrf_field() }}
-              <div class="col-md-12">
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <input type="text" name="nickname" readonly class="form-control" id="inputnickname" value="{{ Auth::user()->name }}">
-                  </div>
-                  <div class="form-group col-md-4">
-                    {{-- <select type="text" name="local" class="form-control" id="inputlocal" placeholder="Cerveceria">
-                      <option value="Antares">Antares</option>
-                      <option value="Prinston">Prinston</option>
-                      <option value="Cervelar">Cervelar</option>
-                      <option value="Pentos">Pentos</option>
-                      <option value="BarbaRoja">BarbaRoja</option>
-                      <option value="LaChopperia">LaChopperia</option>
-                    </select> --}}
-
-                      <select  name="local" class="custom-select" id="inputlocal" style="height:3.4rem;">
-                        <option selected> Cerveceria  </option>
-                        <option value="Antares">Antares</option>
-                        <option value="Prinston">Prinston</option>
-                        <option value="Cervelar">Cervelar</option>
-                        <option value="Pentos">Pentos</option>
-                        <option value="BarbaRoja">BarbaRoja</option>
-                        <option value="LaChopperia">LaChopperia</option>
-                      </select>
-
-                    {{-- <input type="text" name="local" class="form-control" id="inputlocal" placeholder="Cerveceria"> --}}
-                  </div>
-                  <div class="form-group col-md-4">
-                    <input type="text" name="titulopost" class="form-control" id="inputitulo" placeholder="Titulo">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Comentarios</label>
-                  <textarea class="form-control" name="mensajeposteado" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <label> <p>Fotos del post</p> <input id="regAvatar" type="file" name="fotopost" value=""></label>
-                <div class="row justify-content-center">
-                  <button type="submit" class="btn btn-primary mb-2">SUBE TU POSTEO!</button>
-                </div>
-              </div>
-              </form>
-            </div>
-            </div>
-            </div>
-            <div class="col-md-12">
+</div>
 
           @foreach ($posteos as $row)
             @if ($row->nickname == Auth::user()->name)
